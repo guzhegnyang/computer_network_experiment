@@ -185,9 +185,10 @@ int main(int argc, const char *argv[])
 						putch('\b');
 						CONSOLE_SCREEN_BUFFER_INFO binfo;
 						GetConsoleScreenBufferInfo(hout, &binfo);
-						for (node* temp = cursor; temp != nullptr; temp = temp->next) {
+						for (node* temp = cursor; temp->ch != 0; temp = temp->next) {
 							putch(temp->ch);
 						}
+						putch(' ');
 						SetConsoleCursorPosition(hout, binfo.dwCursorPosition);
 					}
 				}
